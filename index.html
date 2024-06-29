@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="StyleSheet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+MX:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Playwrite+MX:wght@100..400&family=Playwrite+NG+Modern:wght@100..400&display=swap" rel="stylesheet">
+
+  <body>
+    <div id="main-container">
+      <div class="main-contest">
+        <p id="viewQuotes"></p>
+        <p id="viewAuthor"></p>
+        <button id="NextBtn">Next</button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    let quotes = "";
+    const randomQuotes = () => {
+      const ranNum = Math.floor(Math.random() * 10);
+      let stirng = quotes[ranNum].author;
+      let position = stirng.indexOf(",");
+      let authorName = "";
+      if (position != -1) {
+        authorName = stirng.slice(0, -10);
+      } else if (stirng == null) {
+        authorName = "unknown";
+      } else {
+        authorName = stirng;
+      }
+      document.getElementById("viewQuotes").innerHTML = quotes[ranNum].text;
+      document.getElementById("viewAuthor").innerHTML = `- By ` + authorName;
+    };
+    const getQuotes = async () => {
+      const api = `https://type.fit/api/quotes`;
+      try {
+        const data = await fetch(api);
+        quotes = await data.json();
+        randomQuotes();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const button = document.getElementById("NextBtn");
+    button.addEventListener("click", getQuotes);
+
+    window.onload = function reload() {
+      getQuotes();
+    };
+    reload();
+  </script>
+</html>
