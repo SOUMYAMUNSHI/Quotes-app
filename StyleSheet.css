@@ -1,0 +1,49 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+#main-container {
+    background-color: #FDD835;
+    width: 50%;
+    height: 60vh;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.main-contest {
+    width: 60%;
+    margin: 0 auto;
+    /* background-color: aliceblue; */
+    margin-top: 10px;
+    padding: 20px;
+    display: grid;
+  place-items: center;
+}
+
+.main-contest>#viewQuotes {
+    font-family: "Playwrite MX", cursive;
+    font-optical-sizing: auto;
+    text-align: center;
+    font-size: 30px;
+    color: #424242;
+}
+
+.main-contest>#viewAuthor {
+    text-align: end;
+    font-family: "Playwrite NG Modern", cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.main-contest>button {
+    background-color: #42A5F5;
+    border: none;
+    width: 100px;
+    padding: 10px;
+    color: #212121;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
